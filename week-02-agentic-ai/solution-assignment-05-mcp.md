@@ -20,7 +20,7 @@ Generate a GitHub Personal Access Token (PAT) that will be used for MCP authenti
 
 #### Screenshot 1 — GitHub token creation (scopes only)
 
-Add your screenshot here.
+![Screenshot 1 — GitHub token creation](screenshots/Ass5-01.png)
 
 ---
 
@@ -34,7 +34,7 @@ Create and configure the `.mcp.json` file to define the GitHub MCP server.
 
 #### Screenshot 2 — .mcp.json configuration in VS Code
 
-Add your screenshot here.
+![Screenshot 2 — .mcp.json configuration](screenshots/Ass5-02.png)
 
 ---
 
@@ -48,7 +48,7 @@ Store your GitHub token securely in `.claude/settings.local.json` and ensure it 
 
 #### Screenshot 3 — settings.local.json (token hidden/blurred)
 
-Add your screenshot here.
+![Screenshot 3 — settings.local.json](screenshots/Ass5-03.png)
 
 ---
 
@@ -62,7 +62,7 @@ Confirm that the GitHub MCP server is successfully connected inside Claude Code.
 
 #### Screenshot 4 — /mcp output showing GitHub connected
 
-Add your screenshot here.
+![Screenshot 4 — /mcp output showing GitHub connected](screenshots/Ass5-04.png)
 
 ---
 
@@ -76,7 +76,7 @@ Verify MCP functionality by retrieving real-time data from your GitHub account u
 
 #### Screenshot 5 — Claude response showing real GitHub repositories
 
-Add your screenshot here.
+![Screenshot 5 — Claude response showing real GitHub repositories](screenshots/Ass5-05.png)
 
 ---
 
@@ -92,9 +92,10 @@ Add your screenshot here.
 
 ## GitHub Repository URL
 
-Paste your forked repository URL here:
 
-`__________________________`
+https://github.com/Kenny2113/Ultimate-Agentic-DevOps-with-Claude-Code.git
+
+
 
 ---
 

@@ -20,7 +20,7 @@ Create the `.claude/agents/` directory and add all required agent files.
 
 #### Screenshot 1 — Agents folder structure in VS Code
 
-Add your screenshot here.
+![Screenshot 1 — Agents folder structure](screenshots/Ass4-01.png)
 
 ---
 
@@ -34,19 +34,19 @@ Analyze the configuration differences between the three agents and demonstrate u
 
 #### 1. Why does the cost optimizer use Haiku instead of Sonnet?
 
-Add your answer here...
+The cost optimizer uses Haiku because its job is to analyze Terraform files and suggest cost-saving improvements, which is a relatively straightforward task. Haiku is faster and more cost-effective than Sonnet, making it ideal for routine infrastructure reviews.
 
 ---
 
 #### 2. Why does the security auditor NOT have Write in its tools list?
 
-Add your answer here...
+The security auditor does not have the Write tool because its responsibility is to identify and report security issues, not modify the infrastructure. This ensures the original Terraform code remains unchanged until an engineer reviews and approves any fixes.
 
 ---
 
 #### 3. Why does the tf-writer use `inherit` instead of a specific model?
 
-Add your answer here...
+The tf-writer uses inherit so it automatically uses the same model as the main Claude session. This provides flexibility and allows it to take advantage of whichever model is currently being used, ensuring consistent and high-quality Terraform code generation.
 
 ---
 
@@ -54,13 +54,13 @@ Add your answer here...
 
 #### Screenshot 2 — security-auditor.md frontmatter
 
-Add your screenshot here.
+![Screenshot 2 — security-auditor.md frontmatter](screenshots/Ass4-02.png)
 
 ---
 
 #### Screenshot 3 — cost-optimizer.md frontmatter
 
-Add your screenshot here.
+![Screenshot 3 — cost-optimizer.md](screenshots/Ass4-03.png)
 
 ---
 
@@ -74,7 +74,7 @@ Trigger the security auditor agent and analyze the generated security report for
 
 #### Screenshot 4 — Security auditor delegation triggered
 
-Add your screenshot here.
+![Screenshot 4 — Security auditor delegation triggered](screenshots/Ass4-04.png)
 
 ---
 

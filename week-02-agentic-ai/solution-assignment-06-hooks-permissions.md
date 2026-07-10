@@ -20,7 +20,7 @@ Create a team-level `settings.json` file with allow and deny rules for safe comm
 
 #### Screenshot 1 — settings.json permissions configuration
 
-Add your screenshot here.
+![Screenshot 1 — settings.json permissions configuration](screenshots/Ass6-01.png)
 
 ---
 
