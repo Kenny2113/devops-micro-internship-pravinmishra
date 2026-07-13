@@ -20,7 +20,7 @@ Identify where Claude Code stores memory for this project.
 
 #### Screenshot 1 — Memory file path shown by Claude
 
-Add your screenshot here.
+![Screenshot 1 — Memory file path shown by Claude](screenshots/Ass7-01.png)
 
 ---
 
@@ -34,13 +34,13 @@ Store project-specific rules and configurations into Claude’s memory and verif
 
 #### Screenshot 2 — Claude confirming memory was saved
 
-Add your screenshot here.
+![Screenshot 2 — Claude confirming memory was saved](screenshots/Ass7-02.png)
 
 ---
 
 #### Screenshot 3 — MEMORY.md file showing saved content
 
-Add your screenshot here.
+![Screenshot 3 — MEMORY.md file showing saved content](screenshots/Ass7-03.png)
 
 ---
 

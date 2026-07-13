@@ -80,7 +80,7 @@ Trigger the security auditor agent and analyze the generated security report for
 
 #### Screenshot 5 — Security audit report output
 
-Add your screenshot here.
+![Screenshot 5 — Security audit report output](screenshots/Ass4-05.png)
 
 ---
 
@@ -94,8 +94,7 @@ Trigger the cost optimizer agent and review the generated cost optimization repo
 
 #### Screenshot 6 — Cost optimization report output
 
-Add your screenshot here.
-
+![Screenshot 6 — Cost optimization report output](screenshots/Ass4-06.png)
 ---
 
 # Submission Instructions
@@ -109,7 +108,7 @@ Add your screenshot here.
 
 ## Google Doc Link
 
-Paste your Google Doc URL here:
+https://docs.google.com/document/d/1CTcfkAXJQEvLTjQEC0-op1qqedNJaEB4Gpmb2A44grs/edit?usp=sharing
 
 `__________________________`
 
@@ -117,7 +116,7 @@ Paste your Google Doc URL here:
 
 ## GitHub Repository URL
 
-Paste your forked repository URL here:
+https://github.com/Kenny2113/Ultimate-Agentic-DevOps-with-Claude-Code.git
 
 `__________________________`
 

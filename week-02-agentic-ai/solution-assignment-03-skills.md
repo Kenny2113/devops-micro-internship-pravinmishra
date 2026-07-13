@@ -74,7 +74,7 @@ Initialize Terraform and execute the `/tf-plan` skill to observe plan execution 
 
 #### Screenshot 6 — /tf-plan execution and Claude analysis output
 
-Add your screenshot here.
+![Screenshot 6 — /tf-plan execution and Claude analysis](screenshots/Ass3-06.png)
 
 ---
 
@@ -88,7 +88,7 @@ Add your screenshot here.
 
 ## GitHub Repository URL
 
-Paste your forked repository URL here:
+https://github.com/Kenny2113/Ultimate-Agentic-DevOps-with-Claude-Code.git
 
 `__________________________`
 

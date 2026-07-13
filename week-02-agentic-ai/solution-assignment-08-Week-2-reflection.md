@@ -46,7 +46,7 @@ You can publish your blog on:
 
 #### Screenshot 1 — Blog published and visible
 
-Add your screenshot here.
+![Screenshot 1 — Blog published and visible](screenshots/Ass8-01.png)
 
 ---
 
@@ -54,7 +54,7 @@ Add your screenshot here.
 
 Blog Link:
 
-`__________________________________________`
+https://medium.com/@kenedynwachukwu/reflection-week-2-a3471bb4b9e4
 
 ---
 
@@ -92,7 +92,7 @@ P.S. This post is a part of DevOps Micro Internship with Agentic AI Cohort-3 by 
 
 #### Screenshot 2 — LinkedIn post published
 
-Add your screenshot here.
+![Screenshot 2 — LinkedIn post published](screenshots/Ass8-02.png)
 
 ---
 
@@ -101,14 +101,25 @@ Add your screenshot here.
 LinkedIn Post Content (copy-paste here):
 
 ```
-Paste your LinkedIn post content here
+Week 2 of the DMI Agentic AI Internship was both insightful and practical.
+
+One of the biggest concepts I learned this week was that AI can be organized into specialized subagents, each with a specific responsibility. Instead of relying on one AI to do everything, I learned how subagents like a Security Auditor, Cost Optimizer, and Terraform Writer can each focus on their own area of expertise. It reminded me of how engineering teams work -everyone has a role, and together they produce better results.
+
+I also explored Claude Code, Skills, Hooks, Permissions, and Memory, which showed me how to build AI workflows that are not only intelligent but also structured and safe.
+
+This week changed my perspective on AI. It's not just about generating code - it's about creating systems where AI agents collaborate, follow rules, and help automate real DevOps workflows.
+
+Excited to keep learning and building! 
+
+P.S. This post is part of the DevOps Micro Internship with Agentic AI Cohort 3 by Pravin Mishra. You can begin your DevOps journey by joining the DMI waiting list. (https://lnkd.in/enB3dcpu)
+
 ```
 
 ---
 
 ### LinkedIn Post Link:
 
-`__________________________________________`
+https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_dmi-agenticai-claudecode-share-7482473728447033344-6gs9/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ
 
 ---
 
