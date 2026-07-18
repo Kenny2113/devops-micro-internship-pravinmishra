@@ -73,8 +73,8 @@ This is not a course. It is an internship-style program — real deployments, re
 Week 01 → Success Mindset 
 [![Week 01 – Mindset](./badges/week-01.svg)](./week-01-success-mindset/)
 
-<!-- Week 02 → Agentic AI with Claude Code -->
-<!-- [![Week 02 – Agentic AI](./badges/week-02.svg)](./week-02-agentic-ai/) -->
+ Week 02 → Agentic AI with Claude Code 
+[![Week 02 – Agentic AI](./badges/week-02.svg)](./week-02-agentic-ai/) 
 
 <!-- Week 03 → Linux & Bash for DevOps -->
 <!-- [![Week 03 – Linux & Bash](./badges/week-03.svg)](./week-03-linux-and-bash-for-devops/) -->
@@ -131,8 +131,8 @@ Week 01 → Success Mindset
 | Week | Topic | Status | Assignment | LinkedIn Post | Blog Post |
 |------|-------|--------|------------|---------------|-----------|
 | 00 | Internet & Networking Basics | ✅ Completed | ✅ Solved | — | — |
-| 01 | Success Mindset | ✅ Completed | ✅ Solved | — |https://medium.com/@kenedynwachukwu/version-2-0-the-engineer-who-chose-to-build-96c119783709?sharedUserId=kenedynwachukwu  |
-| 02 | Agentic AI with Claude Code | ⬜ Not Started | ⏳ Pending | — | — |
+| 01 | Success Mindset | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-learninginpublic-growthmindset-activity-7478704745893904384-RbRK?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ |https://medium.com/@kenedynwachukwu/version-2-0-the-engineer-who-chose-to-build-96c119783709?sharedUserId=kenedynwachukwu  |
+| 02 | Agentic AI with Claude Code | ✅ Completed | ✅ Solved| https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_dmi-agenticai-claudecode-activity-7482473731018268673-966-?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | https://medium.com/@kenedynwachukwu/reflection-week-2-a3471bb4b9e4?source=user_profile_page---------0-------------792957a97e94---------------------- |
 | 03 | Linux & Bash for DevOps | ⬜ Not Started | ⏳ Pending | — | — |
 | 04 | Git & GitHub | ⬜ Not Started | ⏳ Pending | — | — |
 | 05 | DevOps Lifecycle & Agile | ⬜ Not Started | ⏳ Pending | — | — |

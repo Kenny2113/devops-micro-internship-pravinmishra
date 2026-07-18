@@ -121,7 +121,6 @@ https://docs.google.com/document/d/1CTcfkAXJQEvLTjQEC0-op1qqedNJaEB4Gpmb2A44grs/
 
 https://github.com/Kenny2113/Ultimate-Agentic-DevOps-with-Claude-Code.git
 
-`Add your URL here`
 
 ---
 
