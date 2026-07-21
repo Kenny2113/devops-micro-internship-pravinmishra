@@ -126,20 +126,23 @@ Answer the following in your own words:
 - If yes, mention 1–2 example error lines from the logs and explain what each one means in simple terms.
 - If no, explain what it means if the error log is empty or shows no recent errors during your check.
 
-Write your answer here.
+There were no actual application errors in the Nginx error log during my check. The only entry I found was:
+
+2026/07/17 07:39:43 [notice] 25242#25242: using inherited sockets from "5;6;"
+
+This is a notice, not an error. It simply means Nginx restarted or reloaded successfully and continued using the existing network sockets without interrupting active connections.
 
 ---
 
 **2. If there were no errors, what does that indicate about the system?**
 
-Write your answer here.
-
+The absence of errors in the Nginx error log indicates that the web server is running normally. It suggests that the configuration is valid, the service is stable, and requests are being handled successfully without any issues that require attention.
 ---
 
 **3. Based on the access logs, were your curl requests visible in the log entries? What does that prove about traffic flow?**
 
-Write your answer here.
-
+Yes. My requests were visible in the access log. For example, I could see requests coming from my public IP (102.91.98.159) for the homepage and the React application's CSS and JavaScript files.
+This proves that traffic is successfully reaching the Nginx server, the server is processing the requests, and it is responding correctly by serving the application files. It also confirms that logging is working as expected, making it easier to monitor and troubleshoot incoming traffic.
 ---
 
 # Task 4 — System Resource Health Check (Capacity Red Flags)
@@ -152,26 +155,22 @@ Assess server capacity and detect potential performance or failure risks.
 
 #### Screenshot 1 — Output of `uptime`
 
-Add your screenshot here.
-
+![Screenshot 1 — Output of `uptime`](screenshots/Ass3-11.png)
 ---
 
 #### Screenshot 2 — Output of `free -h`
 
-Add your screenshot here.
-
+![Screenshot 2 — Output of `free -h`](screenshots/Ass3-12.png)
 ---
 
 #### Screenshot 3 — Output of `df -h`
 
-Add your screenshot here.
-
+![Screenshot 3 — Output of `df -h`](screenshots/Ass3-13.png)
 ---
 
 #### Screenshot 4 — Output of `sudo du -sh /var/* | sort -h`
 
-Add your screenshot here.
-
+![Screenshot 4 — Output of `sudo du -sh /var/* | sort -h`](screenshots/Ass3-14.png)
 ---
 
 ### Notes
@@ -180,14 +179,12 @@ Answer the following in your own words:
 
 **1. Which resource looks most critical right now? (CPU/load, memory, or disk) Explain why.**
 
-Write your answer here.
-
+The disk is the resource I would pay the most attention to. Although it is only 59% used at the moment, disk space is finite and can fill up over time because of logs, application files, or other data. The CPU load is 0.00, which means the server is under almost no processing pressure, and there is still over 500 MB of available memory, so those resources are currently in a healthy state.
 ---
 
 **2. What happens if disk becomes 100% full in a production server?**
 
-Write your answer here.
-
+If the disk reaches 100% capacity, the server may no longer be able to write log files, save application data, or create temporary files. This can cause applications and services to fail unexpectedly, and in some cases, users may no longer be able to access the application until disk space is freed. Monitoring disk usage and cleaning up unnecessary files regularly helps prevent this situation.
 ---
 
 # Task 5 — Configuration & Deployment Verification
@@ -200,20 +197,17 @@ Ensure the correct React build is deployed and Nginx is serving it properly.
 
 #### Screenshot 1 — Output of `ls -lah /var/www/html | head -n 20`
 
-Add your screenshot here.
-
+![Screenshot 1 — Output of `ls -lah /var/www/html | head -n 20`](screenshots/Ass3-15.png)
 ---
 
 #### Screenshot 2 — Output of `grep -R "Deployed by" -n /var/www/html 2>/dev/null | head`
 
-Add your screenshot here.
-
+![Screenshot 2 — Output of `grep -R "Deployed by"](screenshots/Ass3-16.png)
 ---
 
 #### Screenshot 3 — Output of `grep -n "try_files" /etc/nginx/sites-available/default`
 
-Add your screenshot here.
-
+![Screenshot 3 — Output of `grep -n](screenshots/Ass3-17.png)
 ---
 
 ### Notes
@@ -222,8 +216,7 @@ Answer the following in your own words:
 
 **1. How do you confirm that the correct version of the application is deployed?**
 
-Write your answer here.
-
+I confirm the correct version by opening the application in a web browser and checking that the latest changes I made, such as my name and the current date, are displayed. I can also verify the deployed files on the server or search for a deployment marker to ensure the newest build is the one currently being served by Nginx.
 ---
 
 # Task 6 — Nginx Configuration Failure Simulation
@@ -236,20 +229,17 @@ Simulate a real-world Nginx misconfiguration and recover the service safely.
 
 #### Screenshot 1 — Output of `sudo nginx -t` showing the syntax error (broken config)
 
-Add your screenshot here.
-
+![Screenshot 1 — Output of `sudo nginx -t`](screenshots/Ass3-18.png)
 ---
 
 #### Screenshot 2 — Output of `sudo nginx -t` showing syntax ok (fixed config)
 
-Add your screenshot here.
-
+![Screenshot 2 — Output of `sudo nginx -t` showing syntax ok](screenshots/Ass3-19.png)
 ---
 
 #### Screenshot 3 — Output of `curl -I http://<public-ip>` confirming recovery (200 OK)
 
-Add your screenshot here.
-
+![Screenshot 3 — Output of `curl -I http://<public-ip>`](screenshots/Ass3-20.png)
 ---
 
 ### Notes
@@ -258,20 +248,17 @@ Answer the following in your own words:
 
 **1. What caused the configuration failure?**
 
-Write your answer here.
-
+The configuration failed because I intentionally introduced a syntax error into the Nginx configuration file. Since Nginx validates its configuration before applying changes, it detected the mistake and reported an error during the configuration test.
 ---
 
 **2. How did you fix the issue?**
 
-Write your answer here.
-
+I reopened the Nginx configuration file, identified the syntax mistake, corrected it, and then ran sudo nginx -t again to confirm the configuration was valid. After the test passed successfully, I reloaded Nginx to apply the corrected configuration.
 ---
 
 **3. How can you avoid this kind of issue in real production systems?**
 
-Write your answer here.
-
+Before making configuration changes, I would always create a backup and test the configuration with nginx -t. I would also use version control for configuration files and review changes carefully before deploying them to production.
 ---
 
 # Task 7 — Web Application Failure Simulation
@@ -284,14 +271,12 @@ Simulate missing deployment content and recover the application safely.
 
 #### Screenshot 1 — Output of `curl -I http://<public-ip>` showing failure (non-200 response)
 
-Add your screenshot here.
-
+![Screenshot 1 — Output of `curl -I http://<public-ip>`](screenshots/Ass3-21.png)
 ---
 
 #### Screenshot 2 — Output of `curl -I http://<public-ip>` confirming recovery (200 OK)
 
-Add your screenshot here.
-
+![Screenshot 2 — Output of `curl -I http://<public-ip>`](screenshots/Ass3-22.png)
 ---
 
 ### Notes
@@ -300,20 +285,18 @@ Answer the following in your own words:
 
 **1. What caused the application to break in this scenario?**
 
-Write your answer here
+The application stopped working because the main application file was no longer available in the Nginx web root. Without the required files, Nginx could not serve the application correctly, resulting in an error response.
 
 ---
 
 **2. How did you fix the issue and restore the application?**
 
-Write your answer here.
-
+I restored the missing application file to its original location and verified that Nginx could serve it again. After confirming everything was back in place, I tested the application and received a successful HTTP 200 response.
 ---
 
 **3. What steps would you take to prevent this kind of issue in real production systems?**
 
-Write your answer here.
-
+I would keep backups of deployed files, automate deployments through a CI/CD pipeline, test changes before deploying, and use version control so I can quickly restore a working version if something goes wrong.
 ---
 
 # Task 8 — Security & Reliability Review
@@ -328,31 +311,31 @@ Answer the following in your own words:
 
 **1. Why is SSH key-based authentication more secure than sharing passwords?**
 
-Write your answer here.
+SSH keys provide stronger authentication because they use cryptographic encryption instead of passwords that can be guessed or stolen. Private keys also never leave my computer, making unauthorized access much more difficult.
 
 ---
 
 **2. Why should only required ports be open on a production server?**
 
-Write your answer here.
+Only opening the ports that are actually needed reduces the server's attack surface. This lowers the chances of attackers exploiting unnecessary services or gaining unauthorized access.
 
 ---
 
 **3. Why is it important for Nginx to be enabled on boot?**
 
-Write your answer here.
+Enabling Nginx on boot ensures the web server starts automatically whenever the server restarts. This reduces downtime and allows users to access the application without requiring manual intervention.
 
 ---
 
 **4. What are the risks of sharing secrets, keys, or credentials publicly?**
 
-Write your answer here.
+If secrets or credentials are exposed, unauthorized users could access cloud resources, modify infrastructure, steal sensitive information, or generate unexpected costs. Keeping credentials private is essential for maintaining security.
 
 ---
 
 **5. Why should cloud resources be stopped or terminated when they are no longer needed?**
 
-Write your answer here.
+Stopping or terminating unused cloud resources helps reduce unnecessary costs and minimizes security risks. It also ensures resources are only running when they are actively needed.
 
 ---
 
@@ -364,14 +347,12 @@ Write your answer here.
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
-
+https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-aws-nginx-share-7485201894445920257-Ab_s/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ
 ---
 
 #### Screenshot — Published LinkedIn post
 
-Add your screenshot here.
-
+![Screenshot — Published LinkedIn post](screenshots/Ass3-23.png)
 ---
 
 # Submission Instructions

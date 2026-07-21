@@ -20,8 +20,7 @@ Verify the Ubuntu VM and Nginx are ready for deployment.
 
 #### Screenshot 0 — Output of `sudo systemctl status nginx --no-pager` showing Active (running)
 
-Add your screenshot here.
-
+![Screenshot 0 — Output of `sudo systemctl status nginx --no-pager`](screenshots/Ass4-01.png)
 ---
 
 # Task 1 — Get the Website Source Code
@@ -34,8 +33,7 @@ Download and extract the portfolio website template.
 
 #### Screenshot 1 — Output of `ls -la` showing the extracted project folder
 
-Add your screenshot here.
-
+![Screenshot 1 — Output of `ls -la`](screenshots/Ass4-02.png)
 ---
 
 # Task 2 — Add Ownership Proof (Anti-Copy Change)
