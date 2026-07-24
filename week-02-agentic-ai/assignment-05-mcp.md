@@ -93,13 +93,9 @@ Verify MCP functionality by retrieving real-time data from your GitHub account u
 ## GitHub Repository URL
 
 
-<<<<<<< HEAD:week-02-agentic-ai/solution-assignment-05-mcp.md
 https://github.com/Kenny2113/Ultimate-Agentic-DevOps-with-Claude-Code.git
 
 
-=======
-`Add your URL here`
->>>>>>> upstream/main:week-02-agentic-ai/assignment-05-mcp.md
 
 ---
 
