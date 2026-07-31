@@ -20,8 +20,7 @@ Fork `pravinmishraaws/devops-micro-internship-interviews` into your own GitHub a
 
 #### Screenshot 1 — Your fork page with your username and `devops-micro-internship-interviews` visible in the browser URL
 
-Add your screenshot here.
-
+![Your fork page with your username](screenshots/Ass5-01.png)
 ---
 
 # Task 1 — Authenticate GitHub from the Terminal
@@ -34,8 +33,7 @@ Configure one authentication method — HTTPS with a Personal Access Token, or S
 
 #### Screenshot 2 — Output of `git config --global --get credential.helper` (HTTPS) or `ssh -T git@github.com` (SSH) showing successful authentication — never show your token or private key
 
-Add your screenshot here.
-
+![Output of `git config --global --get credential.helper`](screenshots/Ass5-02.png)
 ---
 
 # Task 2 — Clone Your Fork and Configure Remotes
@@ -48,8 +46,7 @@ Clone your fork locally, then add the original repository as `upstream`.
 
 #### Screenshot 3 — Output of `git remote -v` showing `origin` pointing to your fork and `upstream` pointing to `pravinmishraaws/devops-micro-internship-interviews`
 
-Add your screenshot here.
-
+![Output of `git remote -v`](screenshots/Ass5-03.png)
 ---
 
 # Task 3 — Create a Feature Branch and Make Your Change
@@ -62,14 +59,12 @@ Create the branch `feature-readme-update`, add only your own entry (`Full Name �
 
 #### Screenshot 4 — Output of `git status` showing `pull_request.md` modified before staging
 
-Add your screenshot here.
-
+![Output of `git status` showing `pull_request.md`](screenshots/Ass5-04.png)
 ---
 
 #### Screenshot 5 — Output of `git commit`
 
-Add your screenshot here.
-
+![Output of `git commit`](screenshots/Ass5-05.png)
 ---
 
 # Task 4 — Synchronize with Upstream and Push to Your Fork
@@ -82,14 +77,12 @@ Fetch and merge `upstream/main` into your local default branch, rebase your feat
 
 #### Screenshot 6 — Output of `git push -u origin feature-readme-update` showing a successful push
 
-Add your screenshot here.
-
+![Output of `git push -u origin feature-readme-update`](screenshots/Ass5-06.png)
 ---
 
 #### Screenshot 7 — Your fork on GitHub showing `feature-readme-update` in the branch selector or a "Compare & pull request" banner
 
-Add your screenshot here.
-
+![`feature-readme-update` in the branch](screenshots/Ass2-08.png)
 ---
 
 # Task 5 — Create a Pull Request to Upstream
@@ -102,22 +95,19 @@ Open a Pull Request from `feature-readme-update` on your fork to `main` on the u
 
 #### Screenshot 8 — Pull Request creation page showing the correct base repository, base branch, head repository, compare branch, and title
 
-Add your screenshot here.
-
+![Pull Request creation page showing the correct base](screenshots/Ass5-08.png)
 ---
 
 #### Screenshot 9 — Successfully created Pull Request page with the PR number visible
 
-Add your screenshot here.
-
+![Successfully created Pull Request page with the PR number visible](screenshots/Ass5-09.png)
 ---
 
 #### Pull Request URL
 
 Paste your Pull Request URL here:
 
-`Add your URL here`
-
+https://github.com/pravinmishraaws/devops-micro-internship-interviews/pull/448
 ---
 
 # LinkedIn Post (Required)
