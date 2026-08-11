@@ -20,8 +20,7 @@ Download or clone the portfolio website template from GitHub and confirm `index.
 
 #### Screenshot 1 — File Explorer or terminal showing the template folder contents with `index.html` visible
 
-Add your screenshot here.
-
+![Screenshot 1 — File Explorer](screenshots/Ass2-01.png)
 ---
 
 # Task 2 — Create an S3 Bucket for Website Hosting
@@ -34,8 +33,7 @@ Create a globally unique S3 bucket in your chosen AWS region.
 
 #### Screenshot 2 — S3 bucket created screen showing the bucket name and region
 
-Add your screenshot here.
-
+![Screenshot 2 — S3 bucket created](screenshots/Ass2-02.png)
 ---
 
 # Task 3 — Upload Website Files to the Bucket
@@ -48,8 +46,7 @@ Upload the contents of the template folder (not the folder itself) so `index.htm
 
 #### Screenshot 3 — S3 bucket Objects view showing `index.html` at the top or root level
 
-Add your screenshot here.
-
+![Screenshot 3 — S3 bucket Objects](screenshots/Ass2-03.png)
 ---
 
 # Task 4 — Enable Static Website Hosting
@@ -62,8 +59,7 @@ Enable S3 Static Website Hosting with `index.html` as the index document and `er
 
 #### Screenshot 4 — Static website hosting enabled screen showing the Website endpoint
 
-Add your screenshot here.
-
+![Screenshot 4 — Static website hosting](screenshots/Ass2-04.png)
 ---
 
 # Task 5 — Make the Website Public (Bucket Policy + Permissions)
@@ -76,8 +72,7 @@ Adjust Block Public Access settings and save a bucket policy that grants public 
 
 #### Screenshot 5 — Bucket policy page showing the policy saved successfully, with the bucket name visible
 
-Add your screenshot here.
-
+![Screenshot 5 — Bucket policy page](screenshots/Ass2-05.png)
 ---
 
 # Task 6 — Verify Website Works (Public Endpoint Test)
