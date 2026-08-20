@@ -30,21 +30,19 @@ Confirm successful Azure Portal access and Locate the required services and subs
 
 #### Screenshot 1 — Azure Portal homepage after successful login
 
-Add your screenshot here.
-
+![Azure Portal homepage](screenshots/Ass1-01.png)
 ---
 
 #### Screenshot 2 — "Subscriptions" section showing the "Free Trial" subscription
 
-Add your screenshot here.
-
+![Subscriptions" section showing the "Free Trial](screenshots/Ass1-02.png)
 ---
 
 ### Notes
 
 Write a three-to-four-line paragraph explaining which Azure services you plan to explore first and why.
 
-Write your answer here.
+I plan to explore Azure Virtual Network (VNet) first because networking is a fundamental part of cloud infrastructure. I want to understand how VNets, subnets, and Network Security Groups work together to securely connect Azure resources. This will also help me relate Azure networking to AWS VPC, which I have already learned.
 
 ---
 

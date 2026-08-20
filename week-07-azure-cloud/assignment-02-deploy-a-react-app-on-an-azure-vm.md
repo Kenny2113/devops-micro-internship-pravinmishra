@@ -20,8 +20,7 @@ Create the Azure Resource Group `react-app-rg` in a region close to you.
 
 #### Screenshot 1 — Resource Group overview showing the name and region
 
-Add your screenshot here.
-
+![Resource Group overview](screenshots/Ass2-01.png)
 ---
 
 # Task 2 — Provision Ubuntu VM (20.04) with Correct Networking
@@ -34,14 +33,12 @@ Create an Ubuntu 20.04 LTS VM (size B1s) with a Network Security Group allowing 
 
 #### Screenshot 2 — Azure VM overview page showing the VM name, Resource Group, and region
 
-Add your screenshot here.
-
+![Azure VM overview page](screenshots/Ass2-02.png)
 ---
 
 #### Screenshot 3 — Network Security Group inbound rules showing ports 22 and 80 allowed
 
-Add your screenshot here.
-
+![Network Security Group inbound rules](screenshots/Ass2-03.png)
 ---
 
 # Task 3 — SSH into the Azure VM
@@ -54,8 +51,7 @@ Connect to the VM over SSH and confirm the Linux prompt is visible.
 
 #### Screenshot 4 — Terminal showing a successful SSH login with the prompt visible
 
-Add your screenshot here.
-
+![Terminal showing a successful SSH login](screenshots/Ass2-04.png)
 ---
 
 # Task 4 — Update OS and Install Prerequisites (Git, Node.js, npm)
@@ -68,8 +64,7 @@ Update Ubuntu and install Git, Node.js, and npm.
 
 #### Screenshot 5 — Terminal output showing `node -v` and `npm -v`
 
-Add your screenshot here.
-
+![Terminal output](screenshots/Ass2-05.png)
 ---
 
 # Task 5 — Clone and Build the React App
@@ -82,8 +77,7 @@ Clone `my-react-app`, install dependencies, and run `npm run build` to produce t
 
 #### Screenshot 6 — Terminal showing successful `npm run build` completion and `ls -la build` output
 
-Add your screenshot here.
-
+![Terminal showing successful](screenshots/Ass2-06.png)
 ---
 
 # Task 6 — Install and Configure Nginx to Serve the React Build
@@ -96,14 +90,12 @@ Install Nginx and configure it to serve the `build/` directory with `try_files $
 
 #### Screenshot 7 — Successful `sudo nginx -t` output
 
-Add your screenshot here.
-
+![Successful `sudo nginx -t` output](screenshots/Ass2-07.png)
 ---
 
 #### Screenshot 8 — Nginx configuration snippet showing the build root and `try_files` directive
 
-Add your screenshot here.
-
+![Nginx configuration snippet showing the build root](screenshots/Ass2-08.png)
 ---
 
 # Task 7 — Test the Deployment (Public IP)
@@ -116,8 +108,7 @@ Confirm the React app loads through the VM's public IP, navigation works, and a 
 
 #### Screenshot 9 — Browser showing the React app with the public IP visible in the address bar
 
-Add your screenshot here.
-
+![Browser showing the React app](screenshots/Ass2-09.png)
 ---
 
 # Task 8 — Basic Hardening (Recommended)
