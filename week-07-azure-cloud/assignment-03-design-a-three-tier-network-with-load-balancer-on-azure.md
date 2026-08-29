@@ -20,8 +20,7 @@ Create `eb-demo-vnet` (10.0.0.0/16) with `web-subnet` (10.0.1.0/24), `app-subnet
 
 #### Screenshot 1 — Subnet configuration screen showing the three subnets and Bastion subnet (if enabled)
 
-Add your screenshot here.
-
+![Subnet configuration screen](screenshots/Ass3-01.png)
 ---
 
 # Task 2 — Deploy the Web VM and Install NGINX
@@ -58,8 +57,7 @@ Confirm the NGINX default page is reachable through the Load Balancer's public I
 
 #### Screenshot 3 — Browser showing the NGINX welcome page through the Load Balancer Public IP
 
-Add your screenshot here.
-
+![Browser showing the NGINX](screenshots/Ass3-03.png)
 ---
 
 # Task 5 — Clean Up Resources
