@@ -323,8 +323,6 @@ Example:
 
 #### My Weekly Routine
 
-Add your answer here...
-### My Weekly Routine
 
 Monday
 Carry out my job tasks for 6 hours
