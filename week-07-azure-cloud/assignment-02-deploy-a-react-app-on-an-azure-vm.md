@@ -121,8 +121,7 @@ Restrict the SSH Network Security Group rule to your IP if not already restricte
 
 #### Screenshot 10 (optional) — Network Security Group rule showing SSH restricted to your IP
 
-Add your screenshot here.
-
+![Network Security Group rule showing SSH restricted to your IP](screenshots/Ass2-10.png)
 ---
 
 # Submission Instructions

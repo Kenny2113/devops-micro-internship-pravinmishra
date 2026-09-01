@@ -20,8 +20,7 @@ Confirm your Azure CLI is authenticated and can see the VM, network, storage acc
 
 #### Screenshot 1 — `az account show` and `az vm list -d -o table` confirming your subscription and running VM (subscription ID partially blurred)
 
-Add your screenshot here.
-
+![`az account show` and `az vm list -d -o table`](screenshots/Ass7-01.png)
 ---
 
 # Task 2 — Create Project Context and Safety Rules in CLAUDE.md
@@ -34,8 +33,7 @@ Create a `CLAUDE.md` for this workspace that tells Claude what the audit covers 
 
 #### Screenshot 2 — `CLAUDE.md` open in your editor showing the project overview, audit workflow, and safety rules
 
-Add your screenshot here.
-
+![`CLAUDE.md` open in your editor showing the project overview](screenshots/Ass7-02.png)
 ---
 
 # Task 3 — Use Agentic AI to Plan the Audit Before Writing the Script
@@ -48,8 +46,7 @@ Ask Claude Code to read `CLAUDE.md` and propose a read-only, four-check audit pl
 
 #### Screenshot 3 — Claude Code showing the four-check plan, with no files created or modified
 
-Add your screenshot here.
-
+![Claude Code showing the four-check plan](screenshots/Ass7-03.png)
 ---
 
 # Task 4 — Build the Azure Audit Bash Script
@@ -62,14 +59,12 @@ Write a Bash script that runs the four checks from Task 3 using read-only `az` c
 
 #### Screenshot 4 — Your script open in your editor, showing the check functions and the `az` commands they call
 
-Add your screenshot here.
-
+![Your script open in your editor, showing the check functions](screenshots/Ass7-04.png)
 ---
 
 #### Screenshot 5 — Output of `bash -n` (no syntax errors) and `ls -l` showing the script is executable
 
-Add your screenshot here.
-
+![Output of `bash -n` (no syntax errors) and `ls -l`](screenshots/Ass7-05.png)
 ---
 
 # Task 5 — Run the Script and Review the Baseline Report
@@ -82,8 +77,7 @@ Run the script against your live resources and read the report honestly, even if
 
 #### Screenshot 6 — Script output showing your Full Name and all four checks with a PASS, WARN, or FAIL result
 
-Add your screenshot here.
-
+![Script output showing your Full Name and all four checks with a PASS](screenshots/Ass7-06.png)
 ---
 
 # Task 6 — Create and Run the /azure-audit Skill
@@ -96,14 +90,12 @@ Create a Claude Code skill restricted to read-only tools (no `Write`) that runs 
 
 #### Screenshot 7 — Your skill file's frontmatter showing `allowed-tools` without `Write`
 
-Add your screenshot here.
-
+![Your skill file's frontmatter showing `allowed-tools`](screenshots/Ass7-07.png)
 ---
 
 #### Screenshot 8 — `/azure-audit` output showing the baseline findings and Claude's explanation
 
-Add your screenshot here.
-
+![output showing the baseline findings and Claude's explanation](screenshots/Ass7-08.png)
 ---
 
 # Task 7 — Fix a Real Finding and Re-Verify
@@ -116,20 +108,17 @@ Pick one WARN or FAIL finding (or deliberately open an NSG rule to port 22 from 
 
 #### Screenshot 9 — Saved report showing the original finding before the fix
 
-Add your screenshot here.
-
+![Saved report showing the original finding before the fix](screenshots/Ass7-09.png)
 ---
 
 #### Screenshot 10 — Terminal output of the remediation command you ran yourself
 
-Add your screenshot here.
-
+![Terminal output of the remediation command you ran yourself](screenshots/Ass7-10.png)
 ---
 
 #### Screenshot 11 — Second `/azure-audit` run (or report) showing the finding resolved
 
-Add your screenshot here.
-
+![Second `/azure-audit` run (or report) showing the finding resolved](screenshots/Ass7-11.png)
 ---
 
 ### Notes
