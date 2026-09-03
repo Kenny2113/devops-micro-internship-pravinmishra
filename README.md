@@ -130,7 +130,7 @@ Week 07 → Azure Cloud
 
 | Week | Topic | Status | Assignment | LinkedIn Post | Blog Post |
 |------|-------|--------|------------|---------------|-----------|
-| 00 | Internet & Networking Basics | ✅ Completed | ✅ Solved | — | — |
+| 00 | Internet & Networking Basics | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_im-pleased-to-share-my-recent-progress-from-activity-7423428851298570240-6yLi?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | — |
 | 01 | Success Mindset | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-learninginpublic-growthmindset-activity-7478704745893904384-RbRK?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | https://medium.com/@kenedynwachukwu/version-2-0-the-engineer-who-chose-to-build-96c119783709 |
 | 02 | Agentic AI with Claude Code | ✅ Completed | ✅ Solved| https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_dmi-agenticai-claudecode-activity-7482473731018268673-966-?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | https://medium.com/@kenedynwachukwu/reflection-week-2-a3471bb4b9e4?source=user_profile_page---------0-------------792957a97e94---------------------- |
 | 03 | Linux & Bash for DevOps | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-aws-ec2-share-7485624146350149633-OB-0/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | — |
