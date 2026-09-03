@@ -131,13 +131,13 @@ Week 07 → Azure Cloud
 | Week | Topic | Status | Assignment | LinkedIn Post | Blog Post |
 |------|-------|--------|------------|---------------|-----------|
 | 00 | Internet & Networking Basics | ✅ Completed | ✅ Solved | — | — |
-| 01 | Success Mindset | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-learninginpublic-growthmindset-activity-7478704745893904384-RbRK?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ |https://medium.com/@kenedynwachukwu/version-2-0-the-engineer-who-chose-to-build-96c119783709?sharedUserId=kenedynwachukwu  |
+| 01 | Success Mindset | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-learninginpublic-growthmindset-activity-7478704745893904384-RbRK?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | https://medium.com/@kenedynwachukwu/version-2-0-the-engineer-who-chose-to-build-96c119783709 |
 | 02 | Agentic AI with Claude Code | ✅ Completed | ✅ Solved| https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_dmi-agenticai-claudecode-activity-7482473731018268673-966-?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | https://medium.com/@kenedynwachukwu/reflection-week-2-a3471bb4b9e4?source=user_profile_page---------0-------------792957a97e94---------------------- |
 | 03 | Linux & Bash for DevOps | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-aws-ec2-share-7485624146350149633-OB-0/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | — |
 | 04 | Git & GitHub | ✅ Completed | ✅ Solved | https://lnkd.in/p/e5t3h-uQ | — |
 | 05 | DevOps Lifecycle & Agile | ⬜ Not Started | ⏳ Pending | — | — |
-| 06 | AWS Cloud | ⬜ Not Started | ⏳ Pending | — | — |
-| 07 | Azure Cloud | ⬜ Not Started | ⏳ Pending | — | — |
+| 06 | AWS Cloud | 🔄 In Progress | ⏳ Pending | — | — |
+| 07 | Azure Cloud | ✅ Completed | ✅ Solved | https://www.linkedin.com/posts/kennedy-nwachukwu-601466170_devops-dmi-dmiinternship-ugcPost-7499179747659190272-c5qq/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACilgeEBgxwh_-W79kFyWdCZeNgA2BEfYRQ | https://medium.com/@kenedynwachukwu/from-deployment-to-security-auditing-my-azure-book-review-application-with-ai-assistance-96ac72745b5c?postPublishedType=initial |
 | 08 | Terraform | ⬜ Not Started | ⏳ Pending | — | — |
 | 09 | Ansible | ⬜ Not Started | ⏳ Pending | — | — |
 | 10 | Azure DevOps (CI/CD) | ⬜ Not Started | ⏳ Pending | — | — |

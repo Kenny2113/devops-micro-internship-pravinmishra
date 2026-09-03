@@ -29,7 +29,6 @@ Create `eb-demo-vnet` (10.0.0.0/16) with `web-subnet` (10.0.1.0/24), `app-subnet
 
 Create Ubuntu 22.04 LTS VM `web-nginx` in `web-subnet` with a public IP and inbound SSH (22) and HTTP (80), then install and start NGINX and verify the default page via the VM's public IP.
 
-> No screenshot required for this task. Completion is verified through Task 4.
 
 ---
 
@@ -43,8 +42,7 @@ Create Standard Public Load Balancer `web-public-elb` with frontend IP `web-elb-
 
 #### Screenshot 2 — Load Balancer frontend IP configuration
 
-Add your screenshot here.
-
+![Load Balancer frontend IP configuration](screenshots/Ass3-02.png)
 ---
 
 # Task 4 — Test the Architecture
@@ -66,7 +64,6 @@ Confirm the NGINX default page is reachable through the Load Balancer's public I
 
 After capturing all required evidence, delete the `vnet-demo-rg` Resource Group to avoid ongoing charges.
 
-> No screenshot required for this task.
 
 ---
 

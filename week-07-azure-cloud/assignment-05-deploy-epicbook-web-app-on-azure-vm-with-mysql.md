@@ -71,8 +71,7 @@ Clone the EpicBook repository, install dependencies, build the frontend, configu
 
 #### Screenshot 8 — Backend process or listening-port evidence (without exposing environment-variable secrets)
 
-Add your screenshot here.
-
+![Backend process or listening-port evidence](screenshots/Ass5-08.png)
 ---
 
 # Task 4 — Setup Azure Database for MySQL

@@ -102,8 +102,7 @@ Apply least-privilege NSG rules so traffic flows Internet → public entry point
 
 #### Screenshot 7 — Key Vault or approved secret-management configuration (without displaying secret values)
 
-Add your screenshot here.
-
+![Key Vault or approved secret-management configuration](screenshots/Ass6-07.png)
 ---
 
 # Task 4 — Deploy the Presentation (Web) Tier
