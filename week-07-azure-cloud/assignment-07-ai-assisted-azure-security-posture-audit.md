@@ -125,8 +125,11 @@ Pick one WARN or FAIL finding (or deliberately open an NSG rule to port 22 from 
 
 Compare this assignment to the AWS audit you built in Week 6: which finding categories map to each other across the two clouds, and what stayed exactly the same about the workflow even though the `az`/`aws` commands are completely different?
 
-Add your answer here
+The finding categories map across the two clouds based on the security controls being checked. Unrestricted management access maps between AWS Security Groups and Azure Network Security Groups; public storage exposure maps between Amazon S3 and Azure Storage Accounts; encryption-at-rest checks map between AWS EBS volumes and Azure Managed Disks; and database network exposure maps between AWS database services and Azure Database for MySQL.
 
+What stayed exactly the same was the audit workflow. In both clouds, the process is to gather security evidence using read-only commands, analyze the findings against the expected security baseline, identify and explain any risks, allow the human operator to review and perform remediation, and then run the audit again to verify that the issue has been resolved.
+
+Therefore, even though the AWS CLI (aws) and Azure CLI (az) commands are different, the security auditing workflow remains the same: Gather → Analyze → Human Action → Verify.
 ---
 
 # Submission Instructions
