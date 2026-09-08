@@ -20,14 +20,12 @@ Create a `terraform-azure-vm` project and define the resource group, virtual net
 
 #### Screenshot 1 — VS Code showing `main.tf` and the required Azure resources
 
-Add your screenshot here.
-
+![VS Code showing `main.tf`](screenshots/Ass1-01.png)
 ---
 
 #### Screenshot 2 — `main.tf` showing the public IP output and VM authentication configuration, with the password hidden or redacted
 
-Add your screenshot here.
-
+![`main.tf` showing the public IP output and VM authentication](screenshots/Ass1-02.png)
 ---
 
 # Task 2 — Initialize Terraform
@@ -40,8 +38,7 @@ Run `terraform init` and confirm the working directory initializes successfully.
 
 #### Screenshot 3 — Terminal showing successful `terraform init` output
 
-Add your screenshot here.
-
+![Terminal showing successful `terraform init` output](screenshots/Ass1-03.png)
 ---
 
 # Task 3 — Plan and Apply the Configuration
@@ -54,20 +51,17 @@ Review `terraform plan`, run `terraform apply`, and record the VM's public IP fr
 
 #### Screenshot 4 — Terraform plan summary showing the proposed resources
 
-Add your screenshot here.
-
+![Terraform plan summary showing the proposed resources](screenshots/Ass1-04.png)
 ---
 
 #### Screenshot 5 — Terraform apply output showing successful completion
 
-Add your screenshot here.
-
+![Terraform apply output showing successful completion](screenshots/Ass1-05.png)
 ---
 
 #### Screenshot 6 — Terraform output showing the public IP of the VM
 
-Add your screenshot here.
-
+![Terraform output showing the public IP of the VM](screenshots/Ass1-06.png)
 ---
 
 # Task 4 — Verify the Deployment
@@ -80,8 +74,7 @@ Use Azure CLI to confirm the VM was created and is running.
 
 #### Screenshot 7 — Azure CLI output showing the VM name and running status
 
-Add your screenshot here.
-
+![Azure CLI output showing the VM name and running status](screenshots/Ass1-07.png)
 ---
 
 # Task 5 — Destroy the Resources
@@ -94,16 +87,14 @@ Run `terraform destroy` to clean up the Azure resources after testing.
 
 #### Screenshot 8 — Terminal showing successful `terraform destroy` completion
 
-Add your screenshot here.
-
+![Terminal showing successful `terraform destroy`](screenshots/Ass1-08.png)
 ---
 
 ### Notes
 
 Write a short paragraph explaining what you learned or any issues you encountered.
 
-Write your answer here.
-
+I learned that Terraform can save significant time by allowing DevOps engineers to provision and delete cloud resources without manually creating them through the Azure portal. This makes infrastructure management more efficient, especially when deploying production environments that require many resources. I also encountered a VM SKU availability issue with Standard_B1s in Poland Central, which taught me the importance of checking resource availability in a specific Azure region and adapting the infrastructure configuration when necessary.
 ---
 
 # Submission Instructions
