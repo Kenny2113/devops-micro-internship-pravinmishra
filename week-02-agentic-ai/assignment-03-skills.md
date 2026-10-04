@@ -97,6 +97,7 @@ https://github.com/Kenny2113/Ultimate-Agentic-DevOps-with-Claude-Code.git
 Paste your forked repository URL here:
 
 `Add your URL here`
+
 ---
 
 # Completion Checklist
