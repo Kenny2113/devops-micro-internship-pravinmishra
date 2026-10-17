@@ -31,7 +31,7 @@ Create the required folders and files for the Ansible project.
 
 ### Screenshot 1 — Terminal or VS Code showing the complete `static-web` project structure
 
-Add your screenshot here.
+[Terminal or VS Code showing the complete `static-web` project structure](screenshots/Ass3-01.png)
 
 ---
 
@@ -45,8 +45,7 @@ Add both Ubuntu servers to the Ansible inventory.
 
 ### Screenshot 2 — Output of `ansible-inventory -i inventory.ini --graph` showing `web1` and `web2`
 
-Add your screenshot here.
-
+[showing `web1` and `web2`](screenshots/Ass3-02.png)
 ---
 
 ## Configuration File
@@ -54,7 +53,14 @@ Add your screenshot here.
 Copy and paste the complete contents of your `inventory.ini` file below:
 
 ```ini
-Add your inventory.ini content here.
+[web]
+web1 ansible_host=20.109.158.29
+web2 ansible_host=20.59.58.254
+
+[web:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/terraform-azure-vm-key
+
 ```
 
 ---
@@ -69,8 +75,7 @@ Confirm that the Ansible controller can connect to both servers.
 
 ### Screenshot 3 — Ansible ping output showing `SUCCESS` and `pong` for both servers
 
-Add your screenshot here.
-
+[Ansible ping output showing `SUCCESS` and `pong` for both servers](screenshots/Ass3-03.png)
 ---
 
 # Task 4 — Download and Personalize the Static Website
@@ -83,8 +88,7 @@ Download `index.html` to the Ansible controller and personalize the website with
 
 ### Screenshot 4 — Edited `files/index.html` showing the footer line with your full name
 
-Add your screenshot here.
-
+[Edited `files/index.html` showing the footer line with your full name](screenshots/Ass3-04.png)
 ---
 
 # Task 5 — Create the Multi-Play Ansible Playbook
@@ -98,7 +102,63 @@ Create a single Ansible playbook containing separate plays for installation, dep
 Copy and paste the complete contents of your `site.yml` file below:
 
 ```yaml
-Add your site.yml content here.
+---
+- name: Install and start Nginx on web servers
+  hosts: web
+  become: true
+  tasks:
+    - name: Update apt cache and install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Ensure Nginx is enabled and running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+- name: Deploy the static website
+  hosts: web
+  become: true
+  tasks:
+    - name: Copy website to Nginx document root
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: "0644"
+      notify: Reload nginx
+
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+- name: Verify websites return HTTP 200
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Check each web server
+      ansible.builtin.uri:
+        url: "http://{{ hostvars[item].ansible_host }}"
+        status_code: 200
+        return_content: false
+      loop: "{{ groups['web'] }}"
+      register: website_checks
+
+    - name: Confirm all website checks succeeded
+      ansible.builtin.assert:
+        that:
+          - item.status == 200
+        success_msg: "Website is responding with HTTP 200."
+      loop: "{{ website_checks.results }}"
+
 ```
 
 ---
@@ -113,8 +173,7 @@ Check the playbook for YAML or Ansible syntax errors before running it.
 
 ### Screenshot 5 — Successful syntax-check output showing `playbook: site.yml`
 
-Add your screenshot here.
-
+[Successful syntax-check output showing `playbook: site.yml`](screenshots/Ass3-05.png)
 ---
 
 # Task 7 — Run the Multi-Play Playbook
@@ -127,14 +186,12 @@ Install Nginx, deploy the website, and verify both servers in one playbook run.
 
 ### Screenshot 6 — Play 3 verification showing HTTP `200` for both servers
 
-Add your screenshot here.
-
+[Play 3 verification showing HTTP `200` for both servers](screenshots/Ass3-06.png)
 ---
 
 ### Screenshot 7 — Final play recap showing `unreachable=0` and `failed=0` for `web1`, `web2`, and `localhost`
 
-Add your screenshot here.
-
+[Final play recap showing `unreachable=0` and `failed=0` for `web1`, `web2`](screenshots/Ass3-07.png)
 ---
 
 # Task 8 — Verify Idempotency
@@ -147,8 +204,7 @@ Run the playbook again and confirm that it does not make unnecessary changes.
 
 ### Screenshot 8 — Second playbook run showing the play recap with `changed=0`, `unreachable=0`, and `failed=0` for both web servers
 
-Add your screenshot here.
-
+[Second playbook run showing the play recap](screenshots/Ass3-08.png)
 ---
 
 # Task 9 — Test Both Websites Manually
