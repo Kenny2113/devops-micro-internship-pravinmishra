@@ -22,7 +22,7 @@ Create separate directories and files for the Terraform infrastructure and Ansib
 
 #### Screenshot 1 — Terminal or VS Code showing the complete `mini-finance` project structure
 
-Add your screenshot here.
+[mini-finance` project structure](screenshots/Ass4-01.png)
 
 ---
 
@@ -42,14 +42,12 @@ Use Terraform to provision an Ubuntu Virtual Machine with the required Azure net
 
 #### Screenshot 2 — Terraform code showing the `Allow-SSH` rule for port `22` and the `Allow-HTTP` rule for port `80`
 
-Add your screenshot here.
-
+[`Allow-SSH` rule for port `22` and the `Allow-HTTP` rule for port `80`](screenshots/Ass4-02.png)
 ---
 
 #### Screenshot 3 — Terraform code showing the association between `nsg-mini-finance` and `nic-mini-finance`
 
-Add your screenshot here.
-
+[association between `nsg-mini-finance` and `nic-mini-finance`](screenshots/Ass1-03.png)
 ---
 
 ### Notes
@@ -68,14 +66,12 @@ Format and validate the Terraform configuration, review the execution plan, and 
 
 #### Screenshot 4 — End of the `terraform apply` output showing `Apply complete!` with no errors
 
-Add your screenshot here.
-
+[`terraform apply` output showing `Apply complete!`](screenshots/Ass4-04.png)
 ---
 
 #### Screenshot 5 — Output of `terraform output public_ip` showing the VM’s public IP address
 
-Add your screenshot here.
-
+[Output of `terraform output public_ip`](screenshots/Ass4-05.png)
 ---
 
 ### Notes
@@ -94,8 +90,7 @@ Confirm that the Ansible controller can connect to the Terraform-provisioned Azu
 
 #### Screenshot 6 — Passwordless SSH command and the returned `mini-finance` hostname
 
-Add your screenshot here.
-
+[Passwordless SSH command and the returned `mini-finance` hostname](screenshots/Ass4-06.png)
 ---
 
 ### Notes
@@ -114,8 +109,7 @@ Add the Terraform-provisioned Azure VM to the Ansible inventory and confirm that
 
 #### Screenshot 7 — Ansible ping output showing `SUCCESS` and `pong` from the Azure VM
 
-Add your screenshot here.
-
+[Ansible ping output showing `SUCCESS` and `pong` from the Azure VM](screenshots/Ass4-07.png)
 ---
 
 ### Configuration File
@@ -123,7 +117,9 @@ Add your screenshot here.
 Copy and paste the complete contents of your `ansible/inventory.ini` file below:
 
 ```ini
-Add your inventory.ini content here.
+[web]
+mini-finance ansible_host=20.114.24.50 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/terraform-azure-vm-key
+
 ```
 
 ---
@@ -145,8 +141,7 @@ Screenshot must show:
 - Nginx service configured as started and enabled
 - Beginning of Play 2 with the Git repository URL and synchronization task
 
-Add your screenshot here.
-
+[`site.yml` showing Play 1 and the beginning of Play 2](screenshots/Ass4-08.png)
 ---
 
 #### Screenshot 9 — `site.yml` showing the deployment destination, handler, and Play 3 verification
@@ -159,8 +154,7 @@ Screenshot must show:
 - Play 3 targeting `localhost`
 - The `uri` verification and `assert` condition
 
-Add your screenshot here.
-
+[`site.yml` showing the deployment destination, handler, and Play 3](screenshots/Ass4-09.png)
 ---
 
 ### Configuration File
@@ -168,7 +162,86 @@ Add your screenshot here.
 Copy and paste the complete contents of your `ansible/site.yml` file below:
 
 ```yaml
-Add your site.yml content here.
+
+---
+# Play 1: Install and start the required web server packages
+- name: Install and configure web server
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Nginx, Git and rsync
+      ansible.builtin.apt:
+        name:
+          - nginx
+          - git
+          - rsync
+        state: present
+        update_cache: true
+
+    - name: Ensure Nginx is started and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+# Play 2: Clone and deploy Mini Finance
+- name: Deploy Mini Finance website
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Clone Mini Finance repository
+      ansible.builtin.git:
+        repo: "https://github.com/pravinmishraaws/mini-finance-project.git"
+        dest: /opt/mini-finance
+        version: main
+        force: true
+
+    - name: Synchronize website files to Nginx web directory
+      ansible.posix.synchronize:
+        src: /opt/mini-finance/
+        dest: /var/www/html/
+        archive: true
+        delete: true
+      delegate_to: "{{ inventory_hostname }}"
+      notify: Reload nginx
+
+    - name: Set website directory ownership
+      ansible.builtin.file:
+        path: /var/www/html/
+        owner: www-data
+        group: www-data
+        recurse: true
+        state: directory
+
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+# Play 3: Verify website availability from the controller
+- name: Verify Mini Finance website
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Check website HTTP response
+      ansible.builtin.uri:
+        url: "http://20.114.24.50"
+        method: GET
+        status_code: 200
+      register: website_response
+
+    - name: Assert website is responding successfully
+      ansible.builtin.assert:
+        that:
+          - website_response.status == 200
+        success_msg: "Mini Finance website is accessible."
+        fail_msg: "Mini Finance website verification failed."
+
 ```
 
 ---
@@ -183,20 +256,17 @@ Validate the syntax of the multi-play Ansible playbook and run it to install Ngi
 
 #### Screenshot 10 — Successful playbook syntax check showing `playbook: site.yml`
 
-Add your screenshot here.
-
+[Successful playbook syntax check showing `playbook: site.yml`](screenshots/Ass4-10.png)
 ---
 
 #### Screenshot 11 — Play 3 output showing the successful HTTP verification and assertion
 
-Add your screenshot here.
-
+[Play 3 output showing the successful HTTP verification and assertion](screenshots/Ass4-11.png)
 ---
 
 #### Screenshot 12 — Final `PLAY RECAP` showing `failed=0` and `unreachable=0`
 
-Add your screenshot here.
-
+[Final `PLAY RECAP` showing `failed=0` and `unreachable=0`](screenshots/Ass4-12.png)
 ---
 
 ### Notes
@@ -215,8 +285,7 @@ Confirm that the Mini Finance website is publicly accessible through the Azure V
 
 #### Screenshot 13 — Mini Finance website successfully loading in the browser, with the Azure VM’s public IP address visible in the address bar
 
-Add your screenshot here.
-
+[Mini Finance website successfully loading in the browser](screenshots/Ass4-13.png)
 ---
 
 ### Website URL
@@ -224,7 +293,7 @@ Add your screenshot here.
 Add your deployed website URL below:
 
 ```text
-http://<PUBLIC_IP>
+http://20.114.24.50/
 ```
 
 ---
@@ -239,8 +308,7 @@ Create a `README.md` file to document the Mini Finance infrastructure and deploy
 
 #### Screenshot 14 — Completed `README.md` displayed in the VS Code Markdown preview or terminal
 
-Add your screenshot here.
-
+[`README.md` displayed in the VS Code Markdown](screenshots/Ass4-14.png)
 ---
 
 ### README Content
@@ -248,7 +316,191 @@ Add your screenshot here.
 Copy and paste the complete contents of your `README.md` file below:
 
 ```markdown
-Add your README.md content here.
+# Mini Finance – Azure Deployment with Terraform and Ansible
+
+## Project Overview
+
+This project demonstrates the deployment of a static Mini Finance website on Microsoft Azure using Infrastructure as Code (IaC) and configuration management.
+
+Terraform provisions the Azure infrastructure, while Ansible configures the Linux virtual machine, installs Nginx and deploys the website from GitHub.
+
+## Architecture
+
+The deployment consists of:
+
+- Azure Resource Group
+- Azure Virtual Network and Subnet
+- Network Security Group (NSG)
+- Static Public IP
+- Network Interface
+- Ubuntu Linux Virtual Machine
+- Nginx Web Server
+
+**Deployment flow:**
+
+1. Terraform provisions the Azure infrastructure.
+2. Ansible connects to the VM through SSH.
+3. Ansible installs Nginx, Git and rsync.
+4. Ansible clones the Mini Finance repository on the controller.
+5. Ansible synchronizes the website files to the VM's Nginx web directory.
+6. Ansible verifies the website using an HTTP request.
+
+## Technologies Used
+
+- Microsoft Azure
+- Terraform
+- Ansible
+- Ubuntu Linux
+- Nginx
+- Git and GitHub
+- SSH
+- YAML
+- Bash
+
+## Project Structure
+
+```text
+mini-finance/
+├── .gitignore
+├── README.md
+├── terraform/
+│   ├── providers.tf
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+└── ansible/
+    ├── inventory.ini
+    └── site.yml
+```
+
+## Infrastructure Provisioning with Terraform
+
+Terraform was used to provision:
+
+- Resource Group: `mini-finance-rg`
+- Virtual Network: `vnet-mini-finance`
+- Subnet: `subnet-mini-finance`
+- Network Security Group: `nsg-mini-finance`
+- Public IP: `pip-mini-finance`
+- Network Interface: `nic-mini-finance`
+- Ubuntu Virtual Machine: `mini-finance`
+
+### Terraform commands
+
+Run these commands from the project root:
+
+```bash
+cd terraform
+terraform init
+terraform validate
+terraform plan
+terraform apply
+```
+
+To display the VM public IP:
+
+```bash
+terraform output public_ip
+```
+
+## Ansible Configuration and Deployment
+
+Ansible was used to automate the configuration and deployment process.
+
+The playbook contains three plays:
+
+**Play 1 – Install and Configure Web Server**
+
+- Installs Nginx, Git and rsync.
+- Starts Nginx and enables it to run on boot.
+
+**Play 2 – Deploy Mini Finance**
+
+- Clones the GitHub repository on the Ansible controller.
+- Synchronizes website files to `/var/www/html/`.
+- Sets ownership to `www-data:www-data`.
+- Reloads Nginx when website files change.
+
+**Play 3 – Verify Deployment**
+
+- Sends an HTTP GET request to the website.
+- Checks for HTTP status code `200`.
+- Uses Ansible assert to confirm successful deployment.
+
+### Ansible commands
+
+Test SSH connectivity:
+
+```bash
+ansible web -i ansible/inventory.ini -m ansible.builtin.ping
+```
+
+Check playbook syntax:
+
+```bash
+ansible-playbook -i ansible/inventory.ini ansible/site.yml --syntax-check
+```
+
+Execute the deployment:
+
+```bash
+ansible-playbook -i ansible/inventory.ini ansible/site.yml
+```
+
+## Deployment Information
+
+- Cloud provider: Microsoft Azure
+- Region: West US 2
+- Operating system: Ubuntu 24.04 LTS
+- Web server: Nginx
+- Public IP: `20.114.24.50`
+- Website URL: http://20.114.24.50
+
+## Security Considerations
+
+- SSH authentication uses an SSH key pair.
+- SSH access on port 22 is restricted to the configured public IP address.
+- HTTP access on port 80 is publicly available for website visitors.
+- Private SSH keys and Terraform state files are excluded from Git tracking.
+- Credentials and sensitive information should never be committed to the repository.
+
+## Deployment Verification
+
+The deployment was successful.
+
+The Ansible playbook completed all three plays, and the HTTP verification returned status code `200`.
+
+Final Ansible recap:
+
+```text
+localhost:
+ok=2 changed=0 unreachable=0 failed=0
+
+mini-finance:
+ok=8 changed=5 unreachable=0 failed=0
+```
+
+The Mini Finance website was also opened successfully in a web browser using the Azure VM public IP.
+
+## Cleanup
+
+To avoid unnecessary Azure charges after completing the assignment and capturing the required evidence, destroy the provisioned infrastructure:
+
+```bash
+cd terraform
+terraform destroy
+```
+
+Confirm the destruction when prompted.
+
+## Conclusion
+
+This project provided practical experience combining Terraform and Ansible in an Azure deployment workflow.
+
+It demonstrated how infrastructure provisioning, server configuration, website deployment and application verification can be automated rather than performed manually.
+
+**Repository:** https://github.com/pravinmishraaws/mini_finance
+
 ```
 
 ---
@@ -259,30 +511,26 @@ Add your README.md content here.
 
 #### Screenshot 15 — Published LinkedIn post showing the text and at least one deployment screenshot
 
-Add your screenshot here.
-
+[Published LinkedIn post showing the text and at least one deployment](screenshots/Ass4-15.png)
 ---
 
 #### LinkedIn Post URL
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
-
+https://lnkd.in/p/eNDdYwcA
 ---
 
 ### LinkedIn Submission Notes
 
 **One challenge you faced and how you fixed it:**
 
-Add your answer here.
-
+One challenge was adapting the deployment workflow to the static website's structure. I addressed this by inspecting the source repository and implementing an Ansible workflow that clones the application on the control node and synchronizes the website files to the Azure server using rsync.
 ---
 
 **One real-world example where you can use this learning:**
 
-Add your answer here.
-
+This workflow can be applied when deploying web applications to cloud infrastructure in production environments. Terraform can provision the required infrastructure, while Ansible automates server configuration, application deployment and post-deployment verification. This approach supports repeatable deployments and reduces manual configuration errors.
 ---
 
 # Assignment Questions
@@ -291,62 +539,55 @@ Answer the following in your own words:
 
 **1. What did you provision using Terraform in this assignment?**
 
-Add your answer here.
+I used Terraform to provision the Azure infrastructure required to host the Mini Finance application. This included a Resource Group, Virtual Network, Subnet, Network Security Group, Network Interface, Public IP address and Ubuntu Virtual Machine. Terraform allowed me to define and provision these resources consistently through Infrastructure as Code.
 
 ---
 
 **2. What did Ansible configure and deploy in this assignment?**
 
-Add your answer here.
+I used Ansible to automate the configuration of the Azure virtual machine and deployment of the Mini Finance website. The playbook installed Nginx, Git and rsync, ensured that the Nginx service was running and enabled, transferred the website files into `/var/www/html/`, and configured the appropriate directory ownership.
 
 ---
 
 **3. Why is SSH access on port `22` restricted to your public IP address?**
 
-Add your answer here.
+SSH provides administrative access to the virtual machine. Restricting port 22 to my public IP address reduces exposure to unauthorized access attempts and limits the number of systems that can initiate SSH connections to the server.
 
 ---
 
 **4. Why is HTTP port `80` open to the internet?**
 
-Add your answer here.
-
+Port 80 allows users to access the Mini Finance website through a web browser using HTTP. Since the application is intended to be publicly accessible, the port must accept inbound web traffic from the internet.
 ---
 
 **5. What is the purpose of the Ansible inventory file?**
 
-Add your answer here.
-
+The Ansible inventory file defines the target machines that Ansible manages. In this assignment, it contained the Azure VM's connection details, including its IP address, SSH username and private key location. It enabled Ansible to identify and connect to the target server when executing the playbook.
 ---
 
 **6. Why does the playbook use separate plays for install, deploy, and verify?**
 
-Add your answer here.
-
+Separating the playbook into different plays makes the automation easier to understand, maintain and troubleshoot. The first play handles server preparation and Nginx configuration, the second handles application deployment, while the third independently verifies that the application is accessible. This separation also makes each stage of the deployment process easier to manage.
 ---
 
 **7. Why is `rsync` useful when deploying website files?**
 
-Add your answer here.
-
+Rsync efficiently transfers and synchronizes files between systems. It can transfer only files that have changed instead of repeatedly copying everything, reducing unnecessary data transfer and making deployments more efficient. In this assignment, Ansible's synchronize module used rsync to transfer the website files from the control node to the Azure VM.
 ---
 
 **8. What does the Ansible `uri` module verify in this assignment?**
 
-Add your answer here.
-
+The Ansible `uri` module sends an HTTP request to the deployed website and checks the response. In this assignment, it verified that the Mini Finance website returned HTTP status code 200, indicating that the web server successfully responded to the request. An assertion then confirmed the expected result.
 ---
 
 **9. What issue did you face during this assignment, and how did you fix it?**
 
-Add your answer here.
-
+One challenge was configuring the website deployment workflow because the application was a static website rather than a Node.js application. I inspected the source repository, identified the correct deployment approach, and adjusted the Ansible playbook to clone the repository on the control node and synchronize its files to the Azure VM using Ansible's synchronize module. I also ensured rsync was installed on the required systems.
 ---
 
 **10. What did you learn from using Terraform and Ansible together?**
 
-Add your answer here.
-
+I learned how Terraform and Ansible complement each other in an automated infrastructure and deployment workflow. Terraform handles infrastructure provisioning, while Ansible manages server configuration and application deployment. Combining both tools creates a repeatable workflow that reduces manual intervention, improves consistency and makes infrastructure management more efficient.
 ---
 
 # Required Files
