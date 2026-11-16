@@ -28,8 +28,7 @@ Create separate directories and files for the Terraform infrastructure and Ansib
 
 ### Notes
 
-Add your task notes here.
-
+I created a structured project directory named `mini-finance`, with separate `terraform` and `ansible` directories to organize infrastructure provisioning and configuration management. I also created the required configuration files, README.md and .gitignore to support project organization, documentation and secure version control.
 ---
 
 # Task 2 — Create the Azure Infrastructure Using Terraform
@@ -52,8 +51,7 @@ Use Terraform to provision an Ubuntu Virtual Machine with the required Azure net
 
 ### Notes
 
-Add your task notes here.
-
+I developed the Terraform configuration to provision the required Azure infrastructure. I configured the Network Security Group with separate inbound rules for SSH (port 22) and HTTP (port 80), ensuring administrative access was restricted to my public IP while allowing public access to the website. I also associated the Network Security Group with the virtual machine's network interface.
 ---
 
 # Task 3 — Initialize and Apply the Terraform Configuration
@@ -76,8 +74,7 @@ Format and validate the Terraform configuration, review the execution plan, and 
 
 ### Notes
 
-Add your task notes here.
-
+I formatted and initialized the Terraform configuration, validated the code, reviewed the execution plan and successfully applied the configuration. Terraform provisioned the required Azure resources and generated the virtual machine's public IP address, which was subsequently used for SSH connectivity, Ansible configuration and website deployment.
 ---
 
 # Task 4 — Verify Passwordless SSH Access
@@ -95,8 +92,7 @@ Confirm that the Ansible controller can connect to the Terraform-provisioned Azu
 
 ### Notes
 
-Add your task notes here.
-
+I verified SSH connectivity between my Ansible control node and the Azure virtual machine using key-based authentication. The connection was successful without requiring a password, and the returned hostname confirmed that the target virtual machine was reachable and ready for configuration management.
 ---
 
 # Task 5 — Create the Ansible Inventory and Verify Connectivity
@@ -271,8 +267,7 @@ Validate the syntax of the multi-play Ansible playbook and run it to install Ngi
 
 ### Notes
 
-Add your task notes here.
-
+I validated the Ansible playbook syntax before execution and successfully ran the multi-play deployment workflow. The playbook installed and configured Nginx, deployed the Mini Finance website and performed automated HTTP verification. The deployment completed successfully, with the final play recap reporting zero failed and unreachable tasks.
 ---
 
 # Task 8 — Test the Mini Finance Website in a Browser

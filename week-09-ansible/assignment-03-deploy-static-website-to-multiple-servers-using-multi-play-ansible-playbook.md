@@ -217,20 +217,17 @@ Confirm that the static website is accessible from both public IP addresses.
 
 ### Screenshot 9 — `curl -I` output showing HTTP `200 OK` from both servers
 
-Add your screenshot here.
-
+[`curl -I` output showing HTTP `200 OK` from both servers](screenshots/Ass3-09.png)
 ---
 
 ### Screenshot 10 — Browser showing the website from Server 1 with the public IP and your full name visible
 
-Add your screenshot here.
-
+[Browser showing the website from Server 1](screenshots/Ass3-10.png)
 ---
 
 ### Screenshot 11 — Browser showing the website from Server 2 with the public IP and your full name visible
 
-Add your screenshot here.
-
+[Browser showing the website from Server 2](screenshots/Ass3-11.png)
 ---
 
 ## Website URLs
@@ -238,8 +235,8 @@ Add your screenshot here.
 Add both deployed website URLs below:
 
 ```text
-Server 1: http://<SERVER_1_PUBLIC_IP>
-Server 2: http://<SERVER_2_PUBLIC_IP>
+Server 1: http://20.109.158.29/
+Server 2: http://20.59.58.254/
 ```
 
 ---
@@ -255,7 +252,161 @@ Document how the project works and record what you learned.
 Copy and paste the complete contents of your `README.md` file below:
 
 ```markdown
-Add your README.md content here.
+# Assignment 03: Deploy a Static Website to Multiple Servers Using Ansible
+
+## Project Overview
+
+This project demonstrates how to use Ansible to deploy the same static website to multiple Azure virtual machines. I used a multi-play Ansible playbook to install and configure Nginx, deploy the website, and verify that both web servers respond successfully over HTTP.
+
+The goal was to automate website deployment so that the same configuration and website content could be applied consistently across multiple servers.
+
+## Technologies Used
+
+- **Microsoft Azure:** Hosted the virtual machines.
+- **Terraform:** Provisioned the cloud infrastructure.
+- **Ansible:** Automated server configuration and website deployment.
+- **Nginx:** Served the static website over HTTP.
+- **Ubuntu Linux:** Operating system on the web servers.
+- **YAML:** Used to define the Ansible playbook.
+- **SSH:** Enabled secure communication between Ansible and the remote servers.
+
+## Project Structure
+
+```text
+static-web/
+├── files/
+│   └── index.html
+├── inventory.ini
+├── site.yml
+└── README.md
+```
+
+- `files/index.html`: Contains the static website content, including my name in the footer.
+- `inventory.ini`: Defines the web server inventory, IP addresses, SSH username, and private-key path.
+- `site.yml`: Contains the multi-play Ansible playbook used to install Nginx, deploy the website, and verify the deployment.
+- `README.md`: Documents the project, execution steps, and lessons learned.
+
+## Infrastructure and Inventory
+
+I used two Azure virtual machines as web servers:
+
+- `web1`
+- `web2`
+
+Both servers run Ubuntu and are managed remotely using SSH. The Ansible inventory groups them under `[web]`, allowing the same tasks to run against both servers.
+
+The SSH private key is stored outside the project repository, and the private key file permissions are restricted. Sensitive credentials should never be committed to Git.
+
+## How the Playbook Works
+
+The `site.yml` file contains three plays.
+
+### Play 1: Install and Start Nginx
+
+The first play targets the `web` inventory group and uses privilege escalation with `become: true`.
+
+It updates the APT package cache when necessary, installs Nginx if it is not already installed, and ensures the Nginx service is enabled and running.
+
+### Play 2: Deploy the Website
+
+The second play copies `files/index.html` from my Ansible control machine to `/var/www/html/index.html` on both web servers.
+
+The file is assigned to the `www-data` user and group with permission mode `0644`.
+
+A handler named `Reload nginx` reloads Nginx when the website file changes. This avoids reloading the service unnecessarily when no change has occurred.
+
+### Play 3: Verify the Deployment
+
+The third play runs on the Ansible control machine using `connection: local`.
+
+It loops through the web servers in the inventory and sends HTTP requests to each server using Ansible's `uri` module. It checks that each server returns HTTP status code `200`.
+
+An assertion confirms that the website checks succeeded.
+
+## Steps to Run the Project
+
+Run the following commands from the project directory in the WSL Ubuntu terminal.
+
+### 1. Verify the Inventory
+
+```bash
+ansible-inventory -i inventory.ini --graph
+```
+
+This confirms that both web servers are listed in the inventory.
+
+### 2. Test SSH Connectivity
+
+```bash
+ansible web -i inventory.ini -m ping
+```
+
+Both servers should return `SUCCESS` and `pong`.
+
+### 3. Validate the Playbook Syntax
+
+```bash
+ansible-playbook -i inventory.ini site.yml --syntax-check
+```
+
+This checks the playbook syntax before execution.
+
+### 4. Deploy the Website
+
+```bash
+ansible-playbook -i inventory.ini site.yml
+```
+
+Ansible installs and starts Nginx, copies the website to both servers, and verifies the HTTP responses.
+
+### 5. Test Idempotency
+
+Run the playbook again:
+
+```bash
+ansible-playbook -i inventory.ini site.yml
+```
+
+On the successful second run, both web servers reported `changed=0`, `unreachable=0`, and `failed=0`. This demonstrated that Ansible did not need to make additional changes when the servers were already in the desired state.
+
+### 6. Verify the Website Manually
+
+```bash
+curl -I http://WEB1_PUBLIC_IP
+curl -I http://WEB2_PUBLIC_IP
+```
+
+Replace the placeholders with the actual public IP addresses of the web servers. Both requests should return an HTTP `200 OK` response.
+
+The website can also be opened in a browser using each server's public IP address.
+
+## Results
+
+The deployment completed successfully.
+
+- Both Azure web servers were reachable through Ansible.
+- Nginx was installed and running on both servers.
+- The same website was deployed to both servers.
+- The automated HTTP checks returned status code `200`.
+- The second playbook run completed without changes on either web server.
+- Both servers served the website with my name displayed in the footer.
+
+## What I Learned
+
+1. **Ansible inventory management:** I learned how to group multiple servers in an inventory and apply the same tasks to them.
+2. **SSH connectivity:** I learned the importance of using the correct private key, setting appropriate file permissions, and ensuring SSH access is allowed.
+3. **Multi-play playbooks:** I learned how to separate server setup, application deployment, and deployment verification into distinct plays.
+4. **Privilege escalation:** I learned why `become: true` is necessary for administrative operations such as installing packages and deploying files into protected directories.
+5. **Handlers:** I learned how handlers respond to changes and help avoid unnecessary service reloads.
+6. **Idempotency:** I confirmed that rerunning a playbook should not make unnecessary changes when the target servers already match the desired state.
+7. **Automated verification:** I learned how to use the `uri` module and assertions to check that the website is responding correctly.
+8. **Infrastructure and configuration management:** I gained practical experience using Terraform to provision Azure infrastructure and Ansible to configure the provisioned servers.
+
+## Conclusion
+
+This assignment helped me understand how infrastructure provisioning and configuration management work together. Terraform provides the cloud infrastructure, while Ansible configures the servers and deploys the website consistently.
+
+Using a multi-play playbook made the deployment process repeatable, easier to verify, and more efficient than manually configuring each server individually.
 ```
 
 ---
@@ -268,14 +419,12 @@ Add your README.md content here.
 
 Paste your LinkedIn post URL here:
 
-`Add your URL here`
-
+https://lnkd.in/p/eNDdYwcA
 ---
 
 ### Screenshot — Published LinkedIn post
 
-Add your screenshot here.
-
+[Published LinkedIn post](screenshots/Ass3-12.png)
 ---
 
 # Assignment Questions
@@ -284,37 +433,41 @@ Answer the following in your own words:
 
 **1. What issue did you face while completing this assignment, and how did you fix it?**
 
-Add your answer here.
+# Assignment Questions
+
+**1. What issue did you face while completing this assignment, and how did you fix it?**
+
+One issue I faced was SSH connectivity between my Ansible control machine and the Azure virtual machines. I discovered that I was using the wrong SSH private key. I fixed the problem by identifying the correct private key, copying it into my WSL SSH directory, setting the appropriate file permissions, and updating my Ansible inventory. After that, both web servers responded successfully to the Ansible ping test.
 
 ---
 
 **2. What did you learn from this assignment?**
 
-Add your answer here.
+I learned how to use Ansible to manage multiple Azure virtual machines, install and configure Nginx, and deploy the same static website to different servers. I also learned how to structure a multi-play playbook, use handlers, verify HTTP responses, and test idempotency by running the playbook more than once.
 
 ---
 
 **3. Why is it useful to split installation, deployment, and verification into separate plays?**
 
-Add your answer here.
+Splitting these tasks into separate plays makes the playbook easier to understand, maintain, and troubleshoot. Each play has a specific responsibility: installing and starting Nginx, deploying the website, or verifying that the website is accessible. This separation also makes it easier to identify which stage has a problem if something fails.
 
 ---
 
 **4. What is one benefit of using the Ansible `copy` module instead of cloning the website directly from Git on every managed server?**
 
-Add your answer here.
+One benefit is that the `copy` module allows me to manage the website files from a central control machine and deploy the same version to all managed servers. The servers do not need to clone the Git repository themselves, and the deployment does not depend on each server accessing the Git repository directly.
 
 ---
 
 **5. What does idempotency mean in this assignment?**
 
-Add your answer here.
+Idempotency means that running the same Ansible playbook repeatedly produces the desired state without making unnecessary changes. In this assignment, the second run reported `changed=0` on both web servers, showing that the website and Nginx configuration were already in the required state.
 
 ---
 
 **6. What does the Ansible `uri` module verify in Play 3?**
 
-Add your answer here.
+The `uri` module sends HTTP requests to both web servers and checks that each server returns HTTP status code `200`. This confirms that the website is responding successfully over HTTP after deployment.
 
 ---
 
